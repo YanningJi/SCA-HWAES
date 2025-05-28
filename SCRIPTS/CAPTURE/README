@@ -1,0 +1,35 @@
+Below are the list of things to do to make the zip file work. Note that this zip file is an old version file from screaming channel paper published in CCS'18. 
+
+########################################
+software/system version: 
+1. Ubuntu 18.04 
+2. uhd version: 3.14.0
+3. gnuradio version: 3.7.13.5
+4. gcc version: gcc-arm-none-eabi-7-2017-q4-major
+5. SDK version : nRF5_SDK_14.2.0_17b948a
+########################################
+
+########################################
+files you may need to modify based on your computer:
+1. boards.h in nRF5_SDK_14.2.0_17b948a/components/boards/
+2. Makefile.posix in nRF5_SDK_14.2.0_17b948a/components/toolchain/gcc
+3. rblnano2.h in nRF5_SDK_14.2.0_17b948a/components/boards/
+########################################
+
+########################################
+complie the main.c file and prepare for trace capturing:
+1. make GNU_INSTALL_ROOT= <PATH> /gcc-arm-none-eabi-7-2017-q4-major/bin/ -C blenano2/blank/armgcc 
+2. python2 setup.py develop --user
+3. then sc-attack --help should be successful in your terminal
+########################################
+
+########################################
+list of changes to capture traces from hardware AES:
+1. in the config file, set "firmware":"mode" to "hwcrypto"
+2. in the config file, modify the "collection" parameters according to the radio and environment
+3. create a new template for trace alignment
+########################################
+
+Other instructions can be found in : https://github.com/eurecom-s3/screaming_channels
+
+
